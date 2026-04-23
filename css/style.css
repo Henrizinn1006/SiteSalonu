@@ -50,6 +50,7 @@ nav {
 .hero {
     position: relative;
     z-index: 1;
+    text-align: center;
 }
 
 .eyebrow {
@@ -66,6 +67,8 @@ nav {
     line-height: 1.1;
     letter-spacing: -1px;
     max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero h1 span {
@@ -79,6 +82,8 @@ nav {
     color: rgba(240, 237, 230, 0.6);
     line-height: 1.6;
     font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .fade-up {
@@ -108,6 +113,12 @@ nav {
     gap: 16px;
     margin-top: 50px;
     max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero .card {
+    text-align: center;
 }
 
 .card {
@@ -404,15 +415,16 @@ nav {
 
 .livros-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(2, minmax(300px, 360px));
+    gap: 12px;
     align-items: start;
     justify-items: center;
+    justify-content: center;
 }
 
 .livro {
     width: 100%;
-    max-width: 280px;
+    max-width: 360px;
     text-decoration: none;
     color: inherit;
     display: flex;
@@ -429,11 +441,16 @@ nav {
 .livro-imagem-wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 340px;
     margin-top: 10px;
 }
 
 .livro-img {
-    width: 180px;
+    width: 240px;
+    height: 340px;
+    object-fit: contain;
     transition: 0.3s;
     filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.9));
 }
@@ -463,16 +480,27 @@ nav {
 }
 
 .livro h3 {
-    font-size: 18px;
+    font-size: 34px;
+    line-height: 1.1;
+    min-height: 76px;
+    margin-top: 10px;
     margin-bottom: 6px;
     text-align: center;
 }
 
 .livro p {
-    font-size: 13px;
+    font-size: 20px;
+    line-height: 1.35;
+    min-height: 54px;
     margin-bottom: 14px;
     color: rgba(240, 237, 230, 0.5);
     text-align: center;
+}
+
+.livros-section .cta {
+    margin-top: 12px;
+    font-size: 26px;
+    font-weight: 700;
 }
 
 .b2b-section {
@@ -518,14 +546,14 @@ nav {
 
 .b2b-hero-copy {
     color: rgba(240, 237, 230, 0.6);
-    font-size: 17px;
-    line-height: 1.55;
+    font-size: 22px;
+    line-height: 1.6;
 }
 
 .b2b-hero-kicker {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    font-size: 26px;
+    letter-spacing: 0.4px;
+    text-transform: none;
     color: #6b8a3a;
     margin-bottom: 12px;
     font-weight: 700;
@@ -829,8 +857,70 @@ nav {
 }
 
 .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
     color: rgba(240, 237, 230, 0.4);
     font-size: 12px;
+}
+
+.site-credit {
+    font-size: 11px;
+    color: rgba(240, 237, 230, 0.32);
+    letter-spacing: 0.2px;
+}
+
+.site-credit a {
+    color: rgba(240, 237, 230, 0.62);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(107, 138, 58, 0.45);
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.site-credit a:hover {
+    color: #6b8a3a;
+    border-bottom-color: #6b8a3a;
+}
+
+.coming-soon-popup {
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%) translateY(16px);
+    background: linear-gradient(135deg, rgba(7, 10, 6, 0.97), rgba(5, 5, 5, 0.97));
+    color: #f0ede6;
+    border: 1px solid rgba(107, 138, 58, 0.9);
+    border-radius: 10px;
+    padding: 14px 22px;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.35px;
+    text-transform: uppercase;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 0 26px rgba(107, 138, 58, 0.25);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.24s ease, transform 0.24s ease;
+    z-index: 9999;
+}
+
+.coming-soon-popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    animation: comingSoonPulse 0.9s ease;
+}
+
+@keyframes comingSoonPulse {
+    0% {
+        box-shadow: 0 0 0 rgba(107, 138, 58, 0);
+    }
+    50% {
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 0 36px rgba(107, 138, 58, 0.4);
+    }
+    100% {
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 0 26px rgba(107, 138, 58, 0.25);
+    }
 }
 
 a,
@@ -907,8 +997,13 @@ a,
     }
 
     .b2b-hero-copy {
-        font-size: 15px;
-        line-height: 1.5;
+        font-size: 17px;
+        line-height: 1.55;
+    }
+
+    .b2b-hero-kicker {
+        font-size: 20px;
+        letter-spacing: 0.3px;
     }
 
     .b2b-card {
@@ -949,6 +1044,10 @@ a,
         flex-wrap: wrap;
         justify-content: center;
         gap: 16px;
+    }
+
+    .footer-right {
+        align-items: center;
     }
 }
 

@@ -90,3 +90,25 @@ document.querySelectorAll(".pilar").forEach(pilar => {
         }
     });
 });
+
+const comingSoonPopup = document.querySelector("#coming-soon-popup");
+let comingSoonTimer;
+
+document.querySelectorAll(".coming-soon-trigger").forEach(trigger => {
+    trigger.addEventListener("click", event => {
+        event.preventDefault();
+
+        if (!comingSoonPopup) {
+            return;
+        }
+
+        clearTimeout(comingSoonTimer);
+        comingSoonPopup.classList.add("show");
+        comingSoonPopup.setAttribute("aria-hidden", "false");
+
+        comingSoonTimer = setTimeout(() => {
+            comingSoonPopup.classList.remove("show");
+            comingSoonPopup.setAttribute("aria-hidden", "true");
+        }, 1800);
+    });
+});
